@@ -3,7 +3,7 @@
 xmlns:gap = "http://phonegap.com/ns/1.0"
 id = "com.phonegapessentials.contacts"
 version = "1.0.0">
-<name>Example 15-1</name>
+<name>Contacts 15-1</name>
 <description>An example application that uses the PhoneGap
 Contacts API</description>
 <author href="http://johnwargo.com"
