@@ -1,46 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Contact Example</title>
-
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        // specify contact search criteria
-        var options = new ContactFindOptions();
-        options.filter = "";      // empty search string returns all contacts
-        options.multiple = true;  // return multiple results
-        filter = ["displayName"]; // return contact.displayName field
-
-        // find contacts
-        navigator.contacts.find(filter, onSuccess, onError, options);
-    }
-
-    // onSuccess: Get a snapshot of the current contacts
-    //
-    function onSuccess(contacts) {
-        for (var i=0; i<contacts.length; i++) {
-            alert(contacts[i].displayName);
-        }
-    };
-
-    // onError: Failed to get the contacts
-    //
-    function onError(contactError) {
-        alert('onError!');
-    }
-
-    </script>
-  </head>
-  <body>
-    <h1>Example</h1>
-    <p>Find Contacts</p>
-  </body>
+<!DOCTYPE HTML>  
+<html>  
+<head>  
+<title>Contacts</title>  
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8">
+function onDeviceReady(){  
+    var options = new ContactFindOptions();   
+    options.filter="";  
+    options.multiple=true;   
+    var fields = ["phoneNumbers", "name"];   
+    navigator.contacts.find(fields, onSuccess, onError, options);  
+}   
+function onSuccess(contacts) {  
+    var ul = document.getElementById("contactList");   
+    for(var index=0;index<contacts.length;index++) {  
+        var name = contacts[index].name.formatted;   
+        var phoneNumber = contacts[index].phoneNumbers[0].value;   
+        var li = document.createElement('li');   
+        li.innerHTML = "<a href=\"tel://"+phoneNumber+"\">"+name+"+" - "+phoneNumber</a>";   
+        ul.appendChild(li);  
+    }  
+};   
+function onError() {  
+    alert('onError!');  
+};  
+function init(){  
+    document.addEventListener("deviceready", onDeviceReady, false);  
+}   
+</script>  
+</head>  
+<body onLoad="init()">  
+    <h1>Hola amigos. Esta es mi agenda actual:</h1>  
+    <ul id="contactList"></ul>  
+</body>  
 </html>
