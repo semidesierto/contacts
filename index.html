@@ -17,7 +17,7 @@ function onSuccess(contacts) {
         var name = contacts[index].name.formatted;   
         var phoneNumber = contacts[index].phoneNumbers[0].value;   
         var li = document.createElement('li');   
-        li.innerHTML = "<a href=\"tel://"+phoneNumber+"\">"+name+"</a>";   
+        li.innerHTML = "<a href=\"tel://"+phoneNumber+"\">"+name+"+" - "+phoneNumber+"</a>";   
         ul.appendChild(li);  
     }  
 };   
