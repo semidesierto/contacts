@@ -17,7 +17,7 @@ function onSuccess(contacts) {
         var name = contacts[index].name.formatted;   
         var phoneNumber = contacts[index].phoneNumbers[0].value;   
         var li = document.createElement('li');   
-        li.innerHTML = "<a href=\"tel://"+phoneNumber+"\">"+name+"+" - "+phoneNumber+"</a>";   
+        li.innerHTML = "<a href=\"tel://"+phoneNumber+"\">"+name+"</a>";   
         ul.appendChild(li);  
     }  
 };   
@@ -30,7 +30,7 @@ function init(){
 </script>  
 </head>  
 <body onLoad="init()">  
-    <h1>Hola amigos. Esta es mi agenda actual:</h1>  
+    <h1>Agenda de contactos:</h1>  
     <ul id="contactList"></ul>  
 </body>  
 </html>
